@@ -42,6 +42,7 @@ export default function Projects() {
       stack: ["Firebase Auth", "Next.js", "WhatsApp API", "Firestore"],
       github: "https://github.com/G381N/student-wellness",
       live: "https://student-wellness-gamma.vercel.app/",
+      whatsapp: "+91 9380213122",
       year: "2025",
       status: "Completed"
     },
@@ -120,7 +121,7 @@ export default function Projects() {
       title: "IoT Gas Leakage Sensor",
       description: "This lab project was my introduction to IoT. I built a sensor that detects gas leaks and sends real-time alerts, learning how hardware, firmware, and software intersect. Through this, I explored embedded systems, data transmission, and alert-trigger logic.",
       stack: ["Arduino", "IoT Sensors", "C++", "ESP32", "Real-time Monitoring"],
-      live: "https://wokwi.com/projects/your-project-id",
+      live: "https://wokwi.com/projects/435153305648727041",
       year: "2023",
       status: "Completed"
     }
