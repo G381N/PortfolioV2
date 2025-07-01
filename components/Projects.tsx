@@ -130,7 +130,16 @@ export default function Projects() {
   const displayedRegularProjects = showAllProjects ? regularProjects : regularProjects.slice(0, 6);
 
   const openWhatsApp = (number: string, projectName: string) => {
-    const message = encodeURIComponent(`Hi! I'm interested in the ${projectName} project. Could you tell me more about it?`);
+    let message = "";
+    
+    if (projectName === "Elcita WhatsApp Bot") {
+      message = encodeURIComponent("Hi");
+    } else if (projectName === "Christ Wellness") {
+      message = encodeURIComponent(`Hi! I'm interested in the ${projectName} project. Could you tell me more about it?`);
+    } else {
+      message = encodeURIComponent(`Hi! I'm interested in the ${projectName} project. Could you tell me more about it?`);
+    }
+    
     const whatsappUrl = `https://wa.me/${number.replace(/\D/g, '')}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -398,6 +407,18 @@ export default function Projects() {
                           <FiExternalLink className="mr-1 group-hover/btn:rotate-12 transition-transform" size={12} />
                           Demo
                         </motion.a>
+                      )}
+                      
+                      {project.whatsapp && (
+                        <motion.button
+                          onClick={() => openWhatsApp(project.whatsapp!, project.title)}
+                          className="flex items-center px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded text-sm font-medium group/btn flex-1 justify-center"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <SiWhatsapp className="mr-1 group-hover/btn:scale-110 transition-transform" size={12} />
+                          Contact
+                        </motion.button>
                       )}
                     </div>
                   </div>

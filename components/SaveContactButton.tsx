@@ -46,7 +46,7 @@ END:VCARD`;
       {/* Mobile-only floating action button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed bottom-20 left-6 p-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 z-40 transition-all duration-300 border border-blue-400/20 hover:border-blue-400/40"
+        className="md:hidden fixed bottom-8 left-6 p-3 rounded-full bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 z-40 transition-all duration-300 border border-blue-400/20 hover:border-blue-400/40"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3, delay: 1 }}
