@@ -3,14 +3,33 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiYoutube, FiInstagram } from "react-icons/fi";
+import Link from "next/link";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Education", href: "#education" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/#about" },
+  { name: "Education", href: "/#education" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Contact", href: "/#contact" },
+];
+
+const specialPages = [
+  { 
+    name: "YouTube", 
+    href: "/hitpixels", 
+    icon: FiYoutube,
+    color: "from-red-500 to-red-600",
+    hoverColor: "hover:text-red-400"
+  },
+  { 
+    name: "Instagram", 
+    href: "/bikeswithgebin", 
+    icon: FiInstagram,
+    color: "from-pink-500 to-purple-600",
+    hoverColor: "hover:text-pink-400"
+  },
 ];
 
 export default function Header() {
@@ -57,15 +76,39 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
-                <a
+                <Link
                   href={item.href}
                   className="text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
                 >
                   {item.name}
-                </a>
+                </Link>
               </motion.li>
             ))}
           </ul>
+          
+          {/* Special Pages with Icons */}
+          <div className="flex items-center space-x-4 ml-4 pl-4 border-l border-gray-300 dark:border-gray-600">
+            {specialPages.map((page, index) => {
+              const Icon = page.icon;
+              return (
+                <motion.div
+                  key={page.name}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: (navItems.length + index) * 0.1 }}
+                >
+                  <Link
+                    href={page.href}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r ${page.color} text-white text-sm font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg`}
+                  >
+                    <Icon size={16} />
+                    <span>{page.name}</span>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+          
           <ThemeToggle />
         </nav>
 
@@ -94,15 +137,34 @@ export default function Header() {
             <ul className="space-y-4">
               {navItems.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href={item.href}
                     className="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
+              
+              {/* Mobile Special Pages */}
+              <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-600 space-y-3">
+                {specialPages.map((page) => {
+                  const Icon = page.icon;
+                  return (
+                    <li key={page.name}>
+                      <Link
+                        href={page.href}
+                        className={`flex items-center gap-3 py-3 px-4 rounded-lg bg-gradient-to-r ${page.color} text-white font-medium transition-all duration-200`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Icon size={20} />
+                        <span>{page.name}</span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </div>
             </ul>
           </nav>
         </motion.div>

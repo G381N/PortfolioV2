@@ -16,8 +16,8 @@ export default function Navigation() {
     { name: 'Projects', href: '#projects', type: 'internal' },
     { name: 'Resume', href: '/resume.pdf', type: 'download' },
     { name: 'GitHub', href: 'https://github.com/G381N/', type: 'external' },
-    { name: 'YouTube', href: 'https://www.gebin.net/hitpixels.html', type: 'external' },
-    { name: 'Instagram', href: 'https://www.gebin.net/bikeswithgebin.html', type: 'external' },
+    { name: 'YouTube', href: 'https://www.gebin.net/hitpixels', type: 'external' },
+    { name: 'Instagram', href: 'https://www.gebin.net/bikeswithgebin', type: 'external' },
     { name: 'Contact', href: 'mailto:gebin.official@gmail.com', type: 'external' }
   ];
 

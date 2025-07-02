@@ -20,13 +20,13 @@ export default function Hero() {
     },
     {
       icon: FiInstagram,
-      href: "https://www.gebin.net/bikeswithgebin.html",
+      href: "https://www.gebin.net/bikeswithgebin",
       label: "Instagram",
       color: "hover:text-blue-400"
     },
     {
       icon: FiYoutube,
-      href: "https://www.gebin.net/hitpixels.html",
+      href: "/hitpixels",
       label: "YouTube",
       color: "hover:text-blue-400"
     },
