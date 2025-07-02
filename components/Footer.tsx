@@ -188,20 +188,15 @@ export default function Footer() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.1 * index }}
                 >
-                  <a
+                  <motion.a
+                    key={social.name}
                     href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center text-gray-400 ${social.hoverColor} transition-colors text-sm group`}
+                    className={`p-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 transition-all duration-300 ${social.hoverColor} hover:border-white/20 hover:bg-white/10`}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      className="mr-3"
-                    >
-                      <social.icon size={16} />
-                    </motion.div>
-                    {social.name}
-                  </a>
+                    <social.icon size={20} />
+                  </motion.a>
                 </motion.div>
               ))}
             </div>
@@ -230,12 +225,9 @@ export default function Footer() {
                 <motion.a
                   key={social.name}
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-gray-800 text-gray-400 hover:text-blue-400 hover:bg-gray-700 transition-colors"
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  className={`p-2 rounded-lg bg-white/5 border border-white/10 text-gray-400 transition-all duration-300 ${social.hoverColor} hover:border-white/20 hover:bg-white/10`}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  aria-label={social.name}
                 >
                   <social.icon size={16} />
                 </motion.a>

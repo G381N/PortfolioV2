@@ -216,9 +216,7 @@ export default function BikesWithGebinPage() {
             
             <motion.a
               href="https://www.instagram.com/bikeswithgebin/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2.5 rounded-xl font-bold transition-all duration-300 flex items-center gap-2"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -283,12 +281,9 @@ export default function BikesWithGebinPage() {
                 
                 <motion.a
                   href="https://www.instagram.com/bikeswithgebin/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 mt-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.3 }}
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-xl font-bold transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <FiInstagram size={20} />
                   Follow on Instagram
@@ -359,14 +354,12 @@ export default function BikesWithGebinPage() {
             >
               <motion.a
                 href="https://www.instagram.com/bikeswithgebin/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3"
+                className="group relative overflow-hidden bg-gradient-to-r from-pink-500 via-purple-500 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3"
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <FiInstagram size={24} />
-                <span>Follow on Instagram</span>
+                <FiInstagram size={20} />
+                Follow on Instagram
               </motion.a>
 
               <motion.a
@@ -465,9 +458,7 @@ export default function BikesWithGebinPage() {
 
               <motion.a
                 href="https://www.instagram.com/bikeswithgebin/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-xl font-bold transition-all duration-300"
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-xl font-bold transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -560,8 +551,6 @@ export default function BikesWithGebinPage() {
                       <motion.a
                         key={index}
                         href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="group p-3 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 text-gray-400 hover:text-white transition-all duration-300"
                         whileHover={{ scale: 1.1, y: -5 }}
                         whileTap={{ scale: 0.95 }}

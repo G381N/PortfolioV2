@@ -118,8 +118,6 @@ export default function Navigation() {
                   ) : item.type === 'external' ? (
                     <a
                       href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="relative px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors group flex items-center"
                       onClick={handleLinkClick}
                     >
@@ -200,8 +198,6 @@ export default function Navigation() {
                     ) : item.type === 'external' ? (
                       <a
                         href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="flex items-center py-2 text-gray-300 hover:text-blue-400 font-medium transition-colors"
                         onClick={handleLinkClick}
                       >

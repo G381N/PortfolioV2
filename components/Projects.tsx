@@ -268,28 +268,24 @@ export default function Projects() {
                       {project.github && (
                         <motion.a
                           href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors font-medium group/btn"
+                          className="flex items-center gap-2 px-4 py-2 bg-gray-800/80 hover:bg-gray-700/80 rounded-lg text-gray-300 hover:text-white transition-all duration-300 text-sm"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <FiGithub className="mr-3 group-hover/btn:rotate-12 transition-transform" size={18} />
-                          View Code
+                          <FiGithub size={16} />
+                          <span>Code</span>
                         </motion.a>
                       )}
                       
                       {project.live && project.live !== "#" && (
                         <motion.a
                           href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors font-medium group/btn"
+                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg text-white transition-all duration-300 text-sm"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
-                          <FiExternalLink className="mr-3 group-hover/btn:rotate-12 transition-transform" size={18} />
-                          Live Demo
+                          <FiExternalLink size={16} />
+                          <span>Demo</span>
                         </motion.a>
                       )}
                       
@@ -384,28 +380,24 @@ export default function Projects() {
                       {project.github && project.github !== "#" && (
                         <motion.a
                           href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center px-3 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded text-sm font-medium group/btn flex-1 justify-center"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
+                          className="flex items-center gap-2 px-4 py-2 bg-gray-800/80 hover:bg-gray-700/80 rounded-lg text-gray-300 hover:text-white transition-all duration-300 text-sm"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          <FiGithub className="mr-1 group-hover/btn:rotate-12 transition-transform" size={12} />
-                          Code
+                          <FiGithub size={16} />
+                          <span>Code</span>
                         </motion.a>
                       )}
                       
                       {project.live && project.live !== "#" && (
                         <motion.a
                           href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm font-medium group/btn flex-1 justify-center"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
+                          className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg text-white transition-all duration-300 text-sm"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
                         >
-                          <FiExternalLink className="mr-1 group-hover/btn:rotate-12 transition-transform" size={12} />
-                          Demo
+                          <FiExternalLink size={16} />
+                          <span>Demo</span>
                         </motion.a>
                       )}
                       
