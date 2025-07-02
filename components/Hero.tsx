@@ -185,7 +185,6 @@ export default function Hero() {
                       <motion.a
                         key={index}
                         href={social.href}
-                        target="_blank"
                         rel="noopener noreferrer"
                         className={`p-3 rounded-full border border-gray-700 text-gray-400 ${social.color} transition-all duration-300 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-400/30 group relative overflow-hidden`}
                         whileHover={{ scale: 1.1, y: -3 }}
