@@ -7,9 +7,14 @@ import { FaXTwitter } from "react-icons/fa6";
 import Image from "next/image";
 import Link from "next/link";
 
-// YouTube Channel Configuration
+// YouTube API Configuration
+const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 const CHANNEL_ID = 'UCJWCQkIes8obeWnSYMJWoJg';
-const API_KEY = 'AIzaSyCjNL-taIoYvsrHnJFcNQYsl4M0T1EyFH4';
+
+if (!API_KEY) {
+  console.error('YouTube API key not found. Please set NEXT_PUBLIC_YOUTUBE_API_KEY in your environment variables.');
+}
+
 const VIDEO_COUNT = 6;
 
 interface VideoData {
@@ -146,9 +151,26 @@ export default function HitPixelsPage() {
   ];
 
   const loadYouTubeVideos = async () => {
+    // Check if API key is available
+    if (!API_KEY) {
+      console.error('YouTube API key not configured. Please set NEXT_PUBLIC_YOUTUBE_API_KEY environment variable.');
+      setVideos([]);
+      setLoading(false);
+      return;
+    }
+
     try {
       const channelResponse = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${API_KEY}`);
+      
+      if (!channelResponse.ok) {
+        throw new Error(`API request failed: ${channelResponse.status} ${channelResponse.statusText}`);
+      }
+      
       const channelData = await channelResponse.json();
+      
+      if (channelData.error) {
+        throw new Error(`YouTube API Error: ${channelData.error.message}`);
+      }
       
       if (!channelData.items || channelData.items.length === 0) {
         throw new Error('Channel not found');
@@ -157,7 +179,16 @@ export default function HitPixelsPage() {
       const uploadsPlaylistId = channelData.items[0].contentDetails.relatedPlaylists.uploads;
       
       const videosResponse = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=20&playlistId=${uploadsPlaylistId}&key=${API_KEY}`);
+      
+      if (!videosResponse.ok) {
+        throw new Error(`Videos API request failed: ${videosResponse.status} ${videosResponse.statusText}`);
+      }
+      
       const videosData = await videosResponse.json();
+      
+      if (videosData.error) {
+        throw new Error(`YouTube API Error: ${videosData.error.message}`);
+      }
       
       if (!videosData.items || videosData.items.length === 0) {
         throw new Error('No videos found');
@@ -165,15 +196,26 @@ export default function HitPixelsPage() {
       
       const videoIds = videosData.items.map((item: any) => item.contentDetails.videoId).join(',');
       const statsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics,contentDetails&id=${videoIds}&key=${API_KEY}`);
+      
+      if (!statsResponse.ok) {
+        throw new Error(`Stats API request failed: ${statsResponse.status} ${statsResponse.statusText}`);
+      }
+      
       const statsData = await statsResponse.json();
       
+      if (statsData.error) {
+        throw new Error(`YouTube API Error: ${statsData.error.message}`);
+      }
+      
       const statsMap: any = {};
-      statsData.items.forEach((item: any) => {
-        statsMap[item.id] = {
-          viewCount: parseInt(item.statistics.viewCount || 0),
-          duration: item.contentDetails.duration
-        };
-      });
+      if (statsData.items) {
+        statsData.items.forEach((item: any) => {
+          statsMap[item.id] = {
+            viewCount: parseInt(item.statistics.viewCount || 0),
+            duration: item.contentDetails.duration
+          };
+        });
+      }
       
       const videosWithStats = videosData.items.map((item: any) => {
         const videoId = item.contentDetails.videoId;
@@ -371,8 +413,6 @@ export default function HitPixelsPage() {
             
             <motion.a
               href={`https://www.youtube.com/channel/${CHANNEL_ID}`}
-              target="_blank"
-              rel="noopener noreferrer"
               className="relative overflow-hidden bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white px-6 py-2.5 rounded-xl font-bold transition-all duration-300 flex items-center gap-2"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -438,8 +478,6 @@ export default function HitPixelsPage() {
                 
                 <motion.a
                   href={`https://www.youtube.com/channel/${CHANNEL_ID}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 mt-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -528,8 +566,6 @@ export default function HitPixelsPage() {
             >
               <motion.a
                 href={`https://www.youtube.com/channel/${CHANNEL_ID}`}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="group relative overflow-hidden bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3"
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
@@ -614,8 +650,6 @@ export default function HitPixelsPage() {
                       
                       <motion.a
                         href={`https://www.youtube.com/watch?v=${video.id}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
@@ -680,8 +714,6 @@ export default function HitPixelsPage() {
                 
                 <motion.a
                   href={`https://www.youtube.com/channel/${CHANNEL_ID}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-3 rounded-xl font-bold transition-all duration-300"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -776,8 +808,6 @@ export default function HitPixelsPage() {
                       <motion.a
                         key={index}
                         href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="group p-3 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 text-gray-400 hover:text-white transition-all duration-300"
                         whileHover={{ scale: 1.1, y: -5 }}
                         whileTap={{ scale: 0.95 }}
