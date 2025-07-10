@@ -27,7 +27,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-black border-t border-gray-800/50 overflow-hidden pt-16 pb-12">
+    <footer className="relative bg-black border-t border-gray-800/50 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-20">
         <div 
@@ -39,8 +39,8 @@ export default function Footer() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
           
           {/* Column 1: Brand */}
           <div className="lg:col-span-4">
@@ -100,35 +100,35 @@ export default function Footer() {
           </div>
           
           {/* Column 4: Connect */}
-          <div className="lg:col-span-3 flex justify-center lg:justify-end items-center">
-            <div className="relative">
-              <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-gray-800 via-blue-800/50 to-gray-800"></div>
-              <div className="relative flex flex-row lg:flex-col gap-4 p-2">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <motion.a
-                      key={social.name}
-                      href={social.href}
-                      aria-label={social.name}
-                      className="group p-2.5 rounded-full text-gray-400 hover:text-blue-400 hover:bg-blue-900/50 transition-all duration-300"
-                      whileHover={{ scale: 1.15 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Icon size={18} />
-                    </motion.a>
-                  );
-                })}
-              </div>
-            </div>
+          <div className="lg:col-span-3">
+            <h4 className="text-white font-semibold mb-4">Connect</h4>
+            <ul className="space-y-3">
+              {socialLinks.map((social) => (
+                <li key={social.name}>
+                  <a href={social.href} className="flex items-center text-gray-400 hover:text-blue-400 transition-colors text-sm group">
+                    <social.icon className="mr-3 text-gray-500 group-hover:text-blue-400 transition-colors" size={16} />
+                    {social.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-800/50 text-center">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Gebin George. All Rights Reserved.
-          </p>
+        <div className="pt-8 border-t border-gray-800/50">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-gray-500 text-sm order-2 md:order-1">
+              © {new Date().getFullYear()} Gebin George. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4 order-1 md:order-2">
+              {socialLinks.map((social) => (
+                <a key={social.name} href={social.href} aria-label={social.name} className="p-2.5 rounded-full bg-gray-800/50 text-gray-400 hover:bg-blue-900/50 hover:text-blue-400 transition-all">
+                  <social.icon size={18} />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </footer>

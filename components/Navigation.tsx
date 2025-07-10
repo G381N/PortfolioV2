@@ -17,7 +17,8 @@ export default function Navigation() {
     { name: 'Resume', href: '/resume.pdf', type: 'download' },
     { name: 'GitHub', href: 'https://github.com/G381N/', type: 'external' },
     { name: 'YouTube', href: 'https://www.gebin.net/hitpixels', type: 'external' },
-    { name: 'Instagram', href: 'https://www.gebin.net/bikeswithgebin', type: 'external' }
+    { name: 'Instagram', href: 'https://www.gebin.net/bikeswithgebin', type: 'external' },
+    { name: 'Contact', href: '#contact', type: 'internal' }
   ];
 
   // Handle scroll event for navbar styling
