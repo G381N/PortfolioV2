@@ -16,6 +16,7 @@ interface ExperienceWithRoles {
   location: string;
   roles: string[];
   institution?: string;
+  workprofile?: string;
 }
 
 type ExperienceItem = ExperienceWithRole | ExperienceWithRoles;
@@ -36,7 +37,8 @@ export default function Experience() {
         {
           location: "Redinent Technologies",
           role: "R&D Intern",
-          institution: "Web Penetration Testing & OSINT Research",
+          institution: "Gained hands-on experience in web app security by solving labs on PortSugar and learning about vulnerability signatures.Explored fundamentals of network scanning with Nmap and basic concepts in OSINT and attack surface mapping.",
+          workprofile: "Redinent Technologies is a Bengaluru-based deep-tech startup specializing in IoT and OT cybersecurity.Their AI-powered platform secures smart devices by detecting firmware-level vulnerabilities.They work with industries like smart cities, oil & gas, and government sectors.Recognized by NASSCOM and DSCI, Redinent is known for its cutting-edge threat detection solutions.",
         }
       ]
     },
@@ -46,7 +48,8 @@ export default function Experience() {
         {
           location: "[24]7.ai (Best Buy Process)",
           role: "Tech Support Advisor",
-          institution: "Customer Tech Support & Issue Resolution",
+          institution: "I was a Geek Squad Agent who provided technical support for laptops, smartphones, and smart home devices.Specialized in remote troubleshooting, software/hardware diagnostics, and system setup.Ensured efficient issue resolution while maintaining high customer satisfaction levels.",
+          workprofile: "Best Buy Co., Inc. is a leading American consumer electronics retailer headquartered in Richfield, Minnesota.It offers a wide range of tech products and services, including support through its Geek Squad division.The company is known for delivering expert customer service and innovative technology solutions.",
         }
       ]
     },
