@@ -106,36 +106,113 @@ export default function Navigation() {
                   transition={{ duration: 0.3, delay: 0.1 * index }}
                 >
                   {item.type === 'download' ? (
-                    <a
+                    <motion.a
                       href={item.href}
                       download
-                      className="relative px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors group flex items-center"
+                      className="relative px-4 py-2 text-sm font-medium text-gray-300 transition-all duration-300 group flex items-center"
                       onClick={handleLinkClick}
+                      whileHover={{ y: -1 }}
                     >
-                      {getIcon(item.name)}
-                      {item.name}
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                    </a>
+                      {/* Soft glow effect */}
+                      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 bg-blue-400/5 rounded-lg blur-md"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-blue-400/10 rounded-lg"></div>
+                      </div>
+                      
+                      <motion.div
+                        className="relative z-10 flex items-center group-hover:text-blue-300 transition-colors duration-300"
+                        whileHover={{ x: 2 }}
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
+                          {getIcon(item.name)}
+                        </motion.div>
+                        <motion.span
+                          whileHover={{ letterSpacing: "0.05em" }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {item.name}
+                        </motion.span>
+                      </motion.div>
+                      
+                      {/* Elegant underline */}
+                      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-500"></div>
+                    </motion.a>
                   ) : item.type === 'external' ? (
-                    <a
+                    <motion.a
                       href={item.href}
-                      className="relative px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors group flex items-center"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative px-4 py-2 text-sm font-medium text-gray-300 transition-all duration-300 group flex items-center"
                       onClick={handleLinkClick}
+                      whileHover={{ y: -1 }}
                     >
-                      {getIcon(item.name)}
-                      {item.name}
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                    </a>
+                      {/* Soft glow effect */}
+                      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 bg-blue-400/5 rounded-lg blur-md"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-blue-400/10 rounded-lg"></div>
+                      </div>
+                      
+                      <motion.div
+                        className="relative z-10 flex items-center group-hover:text-blue-300 transition-colors duration-300"
+                        whileHover={{ x: 2 }}
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
+                          {getIcon(item.name)}
+                        </motion.div>
+                        <motion.span
+                          whileHover={{ letterSpacing: "0.05em" }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {item.name}
+                        </motion.span>
+                      </motion.div>
+                      
+                      {/* Elegant underline */}
+                      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-500"></div>
+                    </motion.a>
                   ) : (
-                    <Link
-                      href={item.href}
-                      className="relative px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-blue-400 transition-colors group flex items-center"
-                      onClick={handleLinkClick}
+                    <motion.div
+                      whileHover={{ y: -1 }}
                     >
-                      {getIcon(item.name)}
-                      {item.name}
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                    </Link>
+                      <Link
+                        href={item.href}
+                        className="relative px-4 py-2 text-sm font-medium text-gray-300 transition-all duration-300 group flex items-center"
+                        onClick={handleLinkClick}
+                      >
+                        {/* Soft glow effect */}
+                        <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div className="absolute inset-0 bg-blue-400/5 rounded-lg blur-md"></div>
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-blue-400/10 rounded-lg"></div>
+                        </div>
+                        
+                        <motion.div
+                          className="relative z-10 flex items-center group-hover:text-blue-300 transition-colors duration-300"
+                          whileHover={{ x: 2 }}
+                        >
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: 5 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                          >
+                            {getIcon(item.name)}
+                          </motion.div>
+                          <motion.span
+                            whileHover={{ letterSpacing: "0.05em" }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {item.name}
+                          </motion.span>
+                        </motion.div>
+                        
+                        {/* Elegant underline */}
+                        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-500"></div>
+                      </Link>
+                    </motion.div>
                   )}
                 </motion.li>
               ))}
@@ -187,33 +264,101 @@ export default function Navigation() {
                     transition={{ duration: 0.3, delay: 0.05 * index }}
                   >
                     {item.type === 'download' ? (
-                      <a
+                      <motion.a
                         href={item.href}
                         download
-                        className="flex items-center py-2 text-gray-300 hover:text-blue-400 font-medium transition-colors"
+                        className="relative flex items-center py-3 px-4 text-gray-300 font-medium transition-all duration-300 group"
                         onClick={handleLinkClick}
+                        whileHover={{ x: 4 }}
                       >
-                        {getIcon(item.name)}
-                        {item.name}
-                      </a>
+                        {/* Subtle glow */}
+                        <div className="absolute inset-0 bg-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+                        
+                        {/* Minimal side indicator */}
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 rounded-r"></div>
+                        
+                        <motion.div
+                          className="relative z-10 flex items-center group-hover:text-blue-300 transition-colors duration-300"
+                        >
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                          >
+                            {getIcon(item.name)}
+                          </motion.div>
+                          <motion.span
+                            whileHover={{ letterSpacing: "0.02em" }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {item.name}
+                          </motion.span>
+                        </motion.div>
+                      </motion.a>
                     ) : item.type === 'external' ? (
-                      <a
+                      <motion.a
                         href={item.href}
-                        className="flex items-center py-2 text-gray-300 hover:text-blue-400 font-medium transition-colors"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative flex items-center py-3 px-4 text-gray-300 font-medium transition-all duration-300 group"
                         onClick={handleLinkClick}
+                        whileHover={{ x: 4 }}
                       >
-                        {getIcon(item.name)}
-                        {item.name}
-                      </a>
+                        {/* Subtle glow */}
+                        <div className="absolute inset-0 bg-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+                        
+                        {/* Minimal side indicator */}
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 rounded-r"></div>
+                        
+                        <motion.div
+                          className="relative z-10 flex items-center group-hover:text-blue-300 transition-colors duration-300"
+                        >
+                          <motion.div
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                          >
+                            {getIcon(item.name)}
+                          </motion.div>
+                          <motion.span
+                            whileHover={{ letterSpacing: "0.02em" }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {item.name}
+                          </motion.span>
+                        </motion.div>
+                      </motion.a>
                     ) : (
-                      <Link
-                        href={item.href}
-                        className="flex items-center py-2 text-gray-300 hover:text-blue-400 font-medium transition-colors"
-                        onClick={handleLinkClick}
+                      <motion.div
+                        whileHover={{ x: 4 }}
                       >
-                        {getIcon(item.name)}
-                        {item.name}
-                      </Link>
+                        <Link
+                          href={item.href}
+                          className="relative flex items-center py-3 px-4 text-gray-300 font-medium transition-all duration-300 group"
+                          onClick={handleLinkClick}
+                        >
+                          {/* Subtle glow */}
+                          <div className="absolute inset-0 bg-blue-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+                          
+                          {/* Minimal side indicator */}
+                          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-4 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 rounded-r"></div>
+                          
+                          <motion.div
+                            className="relative z-10 flex items-center group-hover:text-blue-300 transition-colors duration-300"
+                          >
+                            <motion.div
+                              whileHover={{ scale: 1.1 }}
+                              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                            >
+                              {getIcon(item.name)}
+                            </motion.div>
+                            <motion.span
+                              whileHover={{ letterSpacing: "0.02em" }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              {item.name}
+                            </motion.span>
+                          </motion.div>
+                        </Link>
+                      </motion.div>
                     )}
                   </motion.li>
                 ))}

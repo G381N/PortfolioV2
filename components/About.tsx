@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { FiAward, FiUsers, FiBook, FiCode } from "react-icons/fi";
 import ScrollAnimation from "./ScrollAnimation";
 import AnimatedCard from "./AnimatedCard";
+import { getTotalProjectCount } from "../data/projects";
 
 export default function About() {
-  // Dynamic project count - this will be updated to match actual projects
-  const projectCount = 9; // This should match the number of projects in Projects.tsx
+  // Dynamic project count - automatically counts from projects data
+  const totalProjects = getTotalProjectCount();
 
   const stats = [
     {
@@ -21,7 +22,7 @@ export default function About() {
       icon: <FiBook className="text-blue-400 text-2xl" />,
     },
     {
-      value: `${projectCount}+`,
+      value: `${totalProjects}+`,
       label: "Projects Built",
       icon: <FiCode className="text-blue-400 text-2xl" />,
     },
