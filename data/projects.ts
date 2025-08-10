@@ -39,7 +39,6 @@ export const regularProjects = [
     stack: ["Next.js", "Firebase", "Gemini API", "Voice Recognition", "AI Analytics"],
     github: "https://github.com/G381N/38weekClub",
     live: "https://38week-club.vercel.app/",
-    comingSoon: true,
     year: "2025",
     status: "Completed",
     images: [
