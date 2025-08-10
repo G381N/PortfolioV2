@@ -40,43 +40,66 @@ export default function Hero() {
 
   return (
     <section id="home" className="min-h-screen relative overflow-hidden bg-black flex items-center pt-32">
-      {/* Enhanced Background with More Visible Grid */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-black" />
+      {/* Enhanced Background with Smooth Grid */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/8 to-black" />
         
-        {/* More visible animated grid */}
-        <div className="absolute inset-0" 
-             style={{
-               backgroundImage: `
-                 linear-gradient(to right, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
-                 linear-gradient(to bottom, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
-               `,
-               backgroundSize: '50px 50px'
-             }} 
+        {/* Smoother animated grid */}
+        <motion.div 
+          className="absolute inset-0" 
+          animate={{
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(59, 130, 246, 0.15) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(59, 130, 246, 0.15) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }} 
         />
 
-        {/* Constellation paths */}
-        <svg className="absolute inset-0 w-full h-full opacity-30" width="100%" height="100%">
+        {/* Smoother constellation paths */}
+        <svg className="absolute inset-0 w-full h-full opacity-20" width="100%" height="100%">
           <defs>
             <linearGradient id="constellation" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.3" />
+              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.4" />
               <stop offset="100%" stopColor="#1d4ed8" stopOpacity="0.2" />
             </linearGradient>
           </defs>
-          <path
+          <motion.path
             d="M100,200 Q300,100 500,200 T900,200"
             stroke="url(#constellation)"
             strokeWidth="2"
             fill="none"
-            className="animate-pulse"
+            animate={{
+              opacity: [0.3, 0.7, 0.3]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
           />
-          <path
+          <motion.path
             d="M200,400 Q400,300 600,400 T1000,400"
             stroke="url(#constellation)"
             strokeWidth="2"
             fill="none"
-            className="animate-pulse"
-            style={{ animationDelay: '1s' }}
+            animate={{
+              opacity: [0.3, 0.7, 0.3]
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2.5
+            }}
           />
         </svg>
       </div>
@@ -110,15 +133,15 @@ export default function Hero() {
                     George
                   </span>
                   
-                  {/* Hover glow effect */}
+                  {/* Smooth hover glow effect */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-400/0 to-blue-600/0 rounded-full blur-2xl group-hover:from-blue-400/30 group-hover:to-blue-600/30 transition-all duration-500 -z-10"
+                    className="absolute inset-0 bg-gradient-radial from-blue-400/10 via-blue-500/5 to-transparent rounded-full blur-3xl group-hover:from-blue-400/20 group-hover:via-blue-500/10 transition-all duration-700 ease-out -z-10"
                     animate={{
-                      scale: [1, 1.1, 1],
-                      opacity: [0.3, 0.6, 0.3]
+                      scale: [1, 1.02, 1],
+                      opacity: [0.4, 0.6, 0.4]
                     }}
                     transition={{
-                      duration: 3,
+                      duration: 4,
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}

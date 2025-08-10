@@ -84,7 +84,7 @@ export const regularProjects = [
     stack: ["Golang","HTML", "CSS", "JavaScript"],
     github: "https://github.com/G381N/GoMAKE",
     live: "https://gomovies.gebin.net/",
-    year: "2024",
+    year: "2025",
     status: "Completed",
     images: [
       "/images/gomovies-ui-1.png",
@@ -98,7 +98,7 @@ export const regularProjects = [
     stack: ["HTML", "CSS", "JavaScript", "Golang", "Render"],
     github: "https://github.com/G381N/christ-class-delivery",
     live: "https://christcravings.gebin.net/",
-    year: "2024",
+    year: "2025",
     status: "Completed",
     images: [
       "/images/christ-cravings-ui-1.png",
@@ -126,7 +126,7 @@ export const regularProjects = [
     stack: ["Next.js", "Tailwind CSS", "Cryptography","Vercel"],
     github: "https://github.com/G381N/CodeBreaker",
     live: "https://codebreaker.gebin.net/",
-    year: "2024",
+    year: "2025",
     status: "Completed",
     images: [
       "/images/codebreaker-ui-1.png",
@@ -154,7 +154,7 @@ export const regularProjects = [
     stack: ["Next.js", "Tailwind CSS", "Facebook API", "Instagram API"],
     github: "https://github.com/valianayil/Omg",
     live: "https://www.oneminutegrace.com/",
-    year: "2023",
+    year: "2025",
     status: "Completed",
     images: [
       "/images/omg-ui-1.png",
@@ -166,10 +166,10 @@ export const regularProjects = [
     title: "The Atlas Game",
     description: "A geography-based learning game inspired by GeoGuessr and the Indian 'Atlas' classroom game. Built using Next.js and Firebase (Realtime DB, Auth, Storage), it verifies user entries via Gemini API, dynamically grows the dataset of recognized places, and helps students learn geography interactively.",
     stack: ["Next.js", "Tailwind CSS", "Firebase", "Gemini API"],
-    github: "https://github.com/G381N/atlas",
+    github: "https://github.com/G381N/Atlas",
     live: "#",
     comingSoon: true,
-    year: "2024",
+    year: "2025",
     status: "Completed",
     images: [
       "/images/atlas-ui-1.png",
@@ -182,7 +182,7 @@ export const regularProjects = [
     description: "Another IoT exploration that measures pollution levels and reports air quality index in real time. This project taught me sensor calibration, data logging, and visualization concepts—valuable fundamentals for environmental monitoring tools and smart devices.",
     stack: ["Arduino", "Wokwi"],
     live: "https://wokwi.com/projects/your-project-id",
-    year: "2023",
+    year: "2025",
     status: "Completed",
     images: [
       "/images/iot-aqi-1.png",
@@ -195,7 +195,7 @@ export const regularProjects = [
     description: "This lab project was my introduction to IoT. I built a sensor that detects gas leaks and sends real-time alerts, learning how hardware, firmware, and software intersect. Through this, I explored embedded systems, data transmission, and alert-trigger logic.",
     stack: ["Arduino", "IoT Sensors", "C++", "ESP32", "Real-time Monitoring"],
     live: "https://wokwi.com/projects/435153305648727041",
-    year: "2023",
+    year: "2025",
     status: "Completed",
     images: [
       "/images/iot-gas-1.png",

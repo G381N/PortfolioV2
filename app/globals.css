@@ -371,4 +371,9 @@ a:hover {
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Custom gradient utilities */
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+  }
 } 
