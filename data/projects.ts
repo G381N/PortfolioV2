@@ -33,6 +33,21 @@ export const featuredProjects = [
 ];
 
 export const regularProjects = [
+  // Add QuizWiz to the beginning of regularProjects array
+  {
+    title: "QuizWiz",
+    description: "An AI-powered quiz platform where you can test your knowledge on any topic. Features a competitive leaderboard system where solving quizzes earns points, and you can use those points to buy power-ups for strategic advantages. Built just for fun during free time with Firebase Google Auth and simple collections.",
+    stack: ["Next.js", "Firebase", "Google Auth", "AI/LLM", "Firestore"],
+    github: "https://github.com/G381N/QuizWiz",
+    live: "https://quiz-wlyoucaya-gebin-georges-projects.vercel.app/dashboard",
+    year: "2025",
+    status: "Completed",
+    images: [
+      "/images/quizwiz-ui-1.png",
+      "/images/quizwiz-ui-2.png", 
+      "/images/quizwiz-ui-3.png"
+    ]
+  },
   {
     title: "38 Week Club",
     description: "A personal gym tracking app I made mainly for myself and a few friends. It follows my fixed 4-day split workout routine and lets me track sets using voice — just say what you did, and it logs it. The AI analyses my past workouts to figure out my actual strength levels and suggests how much weight I should be pushing to hit failure properly.",
