@@ -39,7 +39,7 @@ export const regularProjects = [
     description: "An AI-powered quiz platform where you can test your knowledge on any topic. Features a competitive leaderboard system where solving quizzes earns points, and you can use those points to buy power-ups for strategic advantages. Built just for fun during free time with Firebase Google Auth and simple collections.",
     stack: ["Next.js", "Firebase", "Google Auth", "AI/LLM", "Firestore"],
     github: "https://github.com/G381N/QuizWiz",
-    live: "https://quiz-10eoisysu-gebin-georges-projects.vercel.app/",
+    live: "https://quiz-wiz-three.vercel.app",
     year: "2025",
     status: "Completed",
     images: [
