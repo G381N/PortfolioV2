@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiExternalLink, FiCalendar } from "react-icons/fi";
-import { SiWhatsapp } from "react-icons/si";
+import { SiWhatsapp, SiMedium } from "react-icons/si";
 import ScrollAnimation from "./ScrollAnimation";
 import { featuredProjects, regularProjects } from "../data/projects";
 
@@ -18,11 +18,45 @@ const IMAGE_TRANSITION = {
   duration: TRANSITION_DURATION
 };
 
+// Button animation variants
+const buttonVariants = {
+  hover: {
+    scale: 1.02,
+    y: -1,
+    transition: {
+      duration: 0.2,
+      ease: "easeOut"
+    }
+  },
+  tap: {
+    scale: 0.98,
+    transition: {
+      duration: 0.1
+    }
+  }
+};
+
+const iconVariants = {
+  hover: {
+    rotate: 5,
+    scale: 1.1,
+    transition: {
+      duration: 0.2,
+      ease: "easeOut"
+    }
+  }
+};
+
 export default function Projects() {
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [flippedCards, setFlippedCards] = useState<Set<string>>(new Set());
   const [imageIndices, setImageIndices] = useState<Record<string, number>>({});
   const [autoPlayEnabled, setAutoPlayEnabled] = useState<Record<string, boolean>>({});
+
+  // Helper function to check if project has any linkable content
+  const hasLinkableContent = (project: any) => {
+    return (project.live && project.live !== "#") || project.medium || project.github;
+  };
 
   // Automatic image cycling with useEffect
   useEffect(() => {
@@ -195,9 +229,61 @@ export default function Projects() {
         </ScrollAnimation>
         
         <ScrollAnimation delay={0.1} direction="up">
-          <p className="text-gray-400 text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <p className="text-gray-400 text-center max-w-3xl mx-auto mb-6">
             Showcasing innovative solutions across web development, IoT systems, and cutting-edge technologies
           </p>
+        </ScrollAnimation>
+        
+        <ScrollAnimation delay={0.2}>
+          <div className="flex items-center justify-center mb-12 md:mb-16">
+            <motion.div 
+              className="relative px-6 py-3 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-xl border border-blue-500/20 backdrop-blur-sm"
+              animate={{
+                boxShadow: [
+                  "0 0 10px rgba(59, 130, 246, 0.2)",
+                  "0 0 15px rgba(147, 51, 234, 0.25)",
+                  "0 0 10px rgba(59, 130, 246, 0.2)"
+                ]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <div className="flex items-center gap-3">
+                <motion.div
+                  className="w-2 h-2 bg-blue-400/70 rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.6, 0.9, 0.6]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <span className="text-blue-200 font-medium text-sm">
+                  💡 Click on any project card to view the UI screenshots
+                </span>
+                <motion.div
+                  className="w-2 h-2 bg-purple-400/70 rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.6, 0.9, 0.6]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.8
+                  }}
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-xl blur-sm" />
+            </motion.div>
+          </div>
         </ScrollAnimation>
 
         {/* Featured Projects - Large Cards */}
@@ -212,7 +298,7 @@ export default function Projects() {
             >
               <div 
                 className="bg-gray-900/50 border border-gray-800 rounded-xl p-8 relative overflow-hidden hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 cursor-pointer"
-                onClick={() => project.images?.length > 0 && project.live && project.live !== "#" && toggleCardFlip(project.title)}
+                onClick={() => project.images?.length > 0 && hasLinkableContent(project) && toggleCardFlip(project.title)}
               >
                 {/* Hover Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
@@ -272,26 +358,50 @@ export default function Projects() {
                           {project.github && (
                             <motion.a
                               href={project.github}
-                              className="flex items-center gap-2 px-4 py-2 bg-gray-800/80 hover:bg-gray-700/80 rounded-lg text-gray-300 hover:text-white transition-all duration-300 text-sm"
-                              whileHover={{ scale: 1.05 }}
+                              className="group relative flex items-center gap-2 px-4 py-2 bg-gray-900/80 hover:bg-gray-800/80 rounded-lg text-gray-300 hover:text-white transition-all duration-300 text-sm overflow-hidden border border-gray-700/50 hover:border-gray-600/50"
+                              whileHover={{ scale: 1.05, y: -2 }}
                               whileTap={{ scale: 0.95 }}
                               onClick={(e) => e.stopPropagation()}
                             >
+                              <div className="absolute inset-0 bg-gradient-to-r from-gray-800/50 to-gray-700/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              <motion.div
+                                className="relative z-10 flex items-center gap-2"
+                                whileHover={{ x: 3 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <motion.div
+                                  whileHover={{ rotate: 5, scale: 1.1 }}
+                                  transition={{ duration: 0.2 }}
+                            >
                               <FiGithub size={16} />
+                                </motion.div>
                               <span>Code</span>
+                              </motion.div>
                             </motion.a>
                           )}
                           
                           {project.live && project.live !== "#" && (
                             <motion.a
                               href={project.live}
-                              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg text-white transition-all duration-300 text-sm"
-                              whileHover={{ scale: 1.05 }}
+                              className="group relative flex items-center gap-2 px-4 py-2 bg-blue-600/20 hover:bg-blue-700/20 rounded-lg text-blue-400 hover:text-blue-300 transition-all duration-300 text-sm overflow-hidden border border-blue-500/30 hover:border-blue-400/30"
+                              whileHover={{ scale: 1.05, y: -2 }}
                               whileTap={{ scale: 0.95 }}
                               onClick={(e) => e.stopPropagation()}
                             >
+                              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              <motion.div
+                                className="relative z-10 flex items-center gap-2"
+                                whileHover={{ x: 3 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <motion.div
+                                  whileHover={{ rotate: 5, scale: 1.1 }}
+                                  transition={{ duration: 0.2 }}
+                            >
                               <FiExternalLink size={16} />
+                                </motion.div>
                               <span>Demo</span>
+                              </motion.div>
                             </motion.a>
                           )}
                           
@@ -301,12 +411,24 @@ export default function Projects() {
                                 e.stopPropagation();
                                 openWhatsApp(project.whatsapp!, project.title);
                               }}
-                              className="flex items-center justify-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors font-medium group/btn"
-                              whileHover={{ scale: 1.05 }}
+                              className="group relative flex items-center justify-center px-6 py-3 bg-green-600/20 hover:bg-green-700/20 rounded-lg text-green-400 hover:text-green-300 transition-all duration-300 font-medium overflow-hidden border border-green-500/30 hover:border-green-400/30"
+                              whileHover={{ scale: 1.05, y: -2 }}
                               whileTap={{ scale: 0.95 }}
                             >
-                              <SiWhatsapp className="mr-3 group-hover/btn:scale-110 transition-transform" size={18} />
-                              Contact
+                              <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              <motion.div
+                                className="relative z-10 flex items-center gap-2"
+                                whileHover={{ x: 3 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <motion.div
+                                  whileHover={{ rotate: 5, scale: 1.1 }}
+                                  transition={{ duration: 0.2 }}
+                                >
+                                  <SiWhatsapp size={18} />
+                                </motion.div>
+                                <span>Contact</span>
+                              </motion.div>
                             </motion.button>
                           )}
                         </div>
@@ -434,7 +556,7 @@ export default function Projects() {
             >
               <div 
                 className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 h-full hover:border-blue-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer relative overflow-hidden"
-                onClick={() => project.images?.length > 0 && project.live && project.live !== "#" && toggleCardFlip(project.title)}
+                onClick={() => project.images?.length > 0 && hasLinkableContent(project) && toggleCardFlip(project.title)}
               >
                 {/* Hover Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
@@ -481,37 +603,96 @@ export default function Projects() {
 
                       {/* Action Buttons */}
                       <div className="space-y-2">
-                        {project.github && (
+                        {project.medium ? (
                           <motion.a
-                            href={project.github}
-                            className="flex items-center gap-2 px-3 py-2 bg-gray-800/80 hover:bg-gray-700/80 rounded text-gray-300 hover:text-white transition-all duration-300 text-sm w-full"
-                            whileHover={{ scale: 1.02 }}
+                            href={project.medium}
+                            className="group relative flex items-center gap-2 px-3 py-2 bg-gray-900/80 hover:bg-gray-800/80 rounded-lg text-gray-300 hover:text-white transition-all duration-300 text-sm w-full overflow-hidden border border-gray-700/50 hover:border-gray-600/50"
+                            whileHover={{ scale: 1.02, y: -1 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={(e) => e.stopPropagation()}
                           >
+                            <div className="absolute inset-0 bg-gradient-to-r from-gray-800/50 to-gray-700/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <motion.div
+                              className="relative z-10 flex items-center gap-2"
+                              whileHover={{ x: 2 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <motion.div
+                                whileHover={{ rotate: 5, scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <SiMedium size={14} />
+                              </motion.div>
+                              <span>Read Article</span>
+                            </motion.div>
+                          </motion.a>
+                        ) : project.github && (
+                          <motion.a
+                            href={project.github}
+                            className="group relative flex items-center gap-2 px-3 py-2 bg-gray-900/80 hover:bg-gray-800/80 rounded-lg text-gray-300 hover:text-white transition-all duration-300 text-sm w-full overflow-hidden border border-gray-700/50 hover:border-gray-600/50"
+                            whileHover={{ scale: 1.02, y: -1 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <div className="absolute inset-0 bg-gradient-to-r from-gray-800/50 to-gray-700/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <motion.div
+                              className="relative z-10 flex items-center gap-2"
+                              whileHover={{ x: 2 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <motion.div
+                                whileHover={{ rotate: 5, scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                          >
                             <FiGithub size={14} />
+                              </motion.div>
                             <span>Code</span>
+                            </motion.div>
                           </motion.a>
                         )}
                         
                         {project.comingSoon ? (
                           <motion.div
-                            className="flex items-center justify-center gap-2 px-3 py-2 bg-orange-600/20 border border-orange-500/30 rounded text-orange-400 text-sm w-full cursor-default"
-                            whileHover={{ scale: 1.02 }}
+                            className="group relative flex items-center justify-center gap-2 px-3 py-2 bg-orange-600/20 border border-orange-500/30 rounded-lg text-orange-400 text-sm w-full cursor-default overflow-hidden"
+                            whileHover={{ scale: 1.02, y: -1 }}
+                          >
+                            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-orange-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <motion.div
+                              className="relative z-10 flex items-center gap-2"
+                              whileHover={{ x: 2 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <motion.div
+                                whileHover={{ rotate: 5, scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
                           >
                             <FiCalendar size={14} />
+                              </motion.div>
                             <span>Coming Soon</span>
+                            </motion.div>
                           </motion.div>
                         ) : project.live && project.live !== "#" && (
                           <motion.a
                             href={project.live}
-                            className="flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white transition-colors text-sm w-full"
-                            whileHover={{ scale: 1.02 }}
+                            className="group relative flex items-center gap-2 px-3 py-2 bg-blue-600/20 hover:bg-blue-700/20 rounded-lg text-blue-400 hover:text-blue-300 transition-all duration-300 text-sm w-full overflow-hidden border border-blue-500/30 hover:border-blue-400/30"
+                            whileHover={{ scale: 1.02, y: -1 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={(e) => e.stopPropagation()}
                           >
+                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <motion.div
+                              className="relative z-10 flex items-center gap-2"
+                              whileHover={{ x: 2 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <motion.div
+                                whileHover={{ rotate: 5, scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                          >
                             <FiExternalLink size={14} />
+                              </motion.div>
                             <span>Demo</span>
+                            </motion.div>
                           </motion.a>
                         )}
                         
@@ -521,12 +702,24 @@ export default function Projects() {
                               e.stopPropagation();
                               openWhatsApp(project.whatsapp!, project.title);
                             }}
-                            className="flex items-center justify-center gap-2 px-3 py-2 bg-green-500 hover:bg-green-600 text-white rounded transition-colors text-sm w-full"
-                            whileHover={{ scale: 1.02 }}
+                            className="group relative flex items-center justify-center gap-2 px-3 py-2 bg-green-600/20 hover:bg-green-700/20 rounded-lg text-green-400 hover:text-green-300 transition-all duration-300 text-sm w-full overflow-hidden border border-green-500/30 hover:border-green-400/30"
+                            whileHover={{ scale: 1.02, y: -1 }}
                             whileTap={{ scale: 0.98 }}
                           >
+                            <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-green-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <motion.div
+                              className="relative z-10 flex items-center gap-2"
+                              whileHover={{ x: 2 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <motion.div
+                                whileHover={{ rotate: 5, scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                          >
                             <SiWhatsapp size={14} />
+                              </motion.div>
                             <span>Contact</span>
+                            </motion.div>
                           </motion.button>
                         )}
                       </div>

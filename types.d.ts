@@ -36,4 +36,21 @@ declare namespace React {
   }
   
   type ReactNode = React.ReactElement | string | number | boolean | null | undefined | React.ReactNodeArray;
+}
+
+// Project type definitions
+interface Project {
+  title: string;
+  description: string;
+  story?: string;
+  stack: string[];
+  github?: string;
+  live?: string;
+  medium?: string;
+  whatsapp?: string;
+  year: string;
+  status: string;
+  images?: string[];
+  flipOnly?: boolean;
+  comingSoon?: boolean;
 } 

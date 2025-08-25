@@ -33,13 +33,25 @@ export const featuredProjects = [
 ];
 
 export const regularProjects = [
-  // Add QuizWiz to the beginning of regularProjects array
+   {
+    title: "LinkedIn Free Premium Claim – Phishing Simulation (Educational)",
+    description: "A simulated phishing page mimicking a LinkedIn Premium offer, built for educational purposes. Demonstrates how attackers use urgency, trust, and AI tools to create convincing baits and harvest credentials. Hosted on Firebase Studio and integrated with Zphisher for credential capture. Strictly for academic awareness—no real malicious activity.",
+    stack: ["Firebase Studio", "Zphisher", "AI Tools", "Social Engineering"],
+    medium: "https://medium.com/@gebin.official/phishing-in-the-ai-era-how-easy-is-it-to-steal-your-data-df724ad96134",
+    year: "2025",
+    status: "Completed",
+    images: [
+      "/images/Linkedin1.png",
+      "/images/Linkedin2.png",
+      "/images/Linkedin3.png"
+    ],
+    flipOnly: true
+  },
   {
-    title: "QuizWiz",
-    description: "An AI-powered quiz platform where you can test your knowledge on any topic. Features a competitive leaderboard system where solving quizzes earns points, and you can use those points to buy power-ups for strategic advantages. Built just for fun during free time with Firebase Google Auth and simple collections.",
-    stack: ["Next.js", "Firebase", "Google Auth", "AI/LLM", "Firestore"],
-    github: "https://github.com/G381N/QuizWiz",
-    live: "https://quiz-wiz-three.vercel.app",
+  title: "QuizWiz",
+  description: "An AI-powered quiz platform where you can test your knowledge on any topic. Features a competitive leaderboard system where solving quizzes earns points, and you can use those points to buy power-ups for strategic advantages. Built just for fun during free time with Firebase Google Auth and simple collections.",
+  stack: ["Next.js", "Firebase", "Google Auth", "AI/LLM", "Firestore"],
+  live: "https://quizwiz.gebin.net/",
     year: "2025",
     status: "Completed",
     images: [
@@ -49,11 +61,11 @@ export const regularProjects = [
     ]
   },
   {
-    title: "38 Week Club",
-    description: "A personal gym tracking app I made mainly for myself and a few friends. It follows my fixed 4-day split workout routine and lets me track sets using voice — just say what you did, and it logs it. The AI analyses my past workouts to figure out my actual strength levels and suggests how much weight I should be pushing to hit failure properly.",
-    stack: ["Next.js", "Firebase", "Gemini API", "Voice Recognition", "AI Analytics"],
-    github: "https://github.com/G381N/38weekClub",
-    live: "https://38week-club.vercel.app/",
+  title: "38 Week Club",
+  description: "A personal gym tracking app I made mainly for myself and a few friends. It follows my fixed 4-day split workout routine and lets me track sets using voice — just say what you did, and it logs it. The AI analyses my past workouts to figure out my actual strength levels and suggests how much weight I should be pushing to hit failure properly.",
+  stack: ["Next.js", "Firebase", "Gemini API", "Voice Recognition", "AI Analytics"],
+  github: "https://github.com/G381N/38weekClub",
+  live: "https://38weekclub.gebin.net/",
     year: "2025",
     status: "Completed",
     images: [
@@ -78,11 +90,11 @@ export const regularProjects = [
     ]
   },
   {
-    title: "Christ Wellness",
-    description: "A dual-module platform for Christ University students. The web app offers a social feed, events, and activities, while the WhatsApp bot enables anonymous complaints, counselor session bookings, and department-based communication. Built with Next.js, Firebase, and WhatsApp Cloud API.",
-    stack: ["Firebase Auth", "Next.js", "WhatsApp API", "Firestore"],
-    github: "https://github.com/G381N/student-wellness",
-    live: "https://student-wellness-gamma.vercel.app/",
+  title: "Christ Wellness",
+  description: "A dual-module platform for Christ University students. The web app offers a social feed, events, and activities, while the WhatsApp bot enables anonymous complaints, counselor session bookings, and department-based communication. Built with Next.js, Firebase, and WhatsApp Cloud API.",
+  stack: ["Firebase Auth", "Next.js", "WhatsApp API", "Firestore"],
+  github: "https://github.com/G381N/student-wellness",
+  live: "https://christwellness.gebin.net/",
     whatsapp: "+91 9380213122",
     year: "2025",
     status: "Completed",
@@ -125,7 +137,7 @@ export const regularProjects = [
     description: "Built as a college assignment, this interactive project simulates a real phishing attack to raise awareness. It replaces a static poster with a fake login demo and a URL scanner using VirusTotal — showing how urgency can trick even cautious users.",
     stack: ["React", "Next.js", "Tailwind CSS", "Cybersecurity"],
     github: "https://github.com/G381N/Poster",
-    live: "https://poster-three.vercel.app/",
+    live: "https://phishing.gebin.net/",
     year: "2025",
     status: "Completed",
     images: [
@@ -192,22 +204,10 @@ export const regularProjects = [
     ]
   },
   {
-    title: "IoT Air Quality Monitor",
-    description: "Another IoT exploration that measures pollution levels and reports air quality index in real time. This project taught me sensor calibration, data logging, and visualization concepts—valuable fundamentals for environmental monitoring tools and smart devices.",
-    stack: ["Arduino", "Wokwi"],
-    live: "https://wokwi.com/projects/your-project-id",
-    year: "2025",
-    status: "Completed",
-    images: [
-      "/images/iot-aqi-1.png",
-      "/images/iot-aqi-2.png",
-      "/images/iot-aqi-3.png"
-    ]
-  },
-  {
     title: "IoT Gas Leakage Sensor",
     description: "This lab project was my introduction to IoT. I built a sensor that detects gas leaks and sends real-time alerts, learning how hardware, firmware, and software intersect. Through this, I explored embedded systems, data transmission, and alert-trigger logic.",
     stack: ["Arduino", "IoT Sensors", "C++", "ESP32", "Real-time Monitoring"],
+    github: "https://github.com/G381N/IoT-Gas-Leakage-Sensor",
     live: "https://wokwi.com/projects/435153305648727041",
     year: "2025",
     status: "Completed",
@@ -215,6 +215,32 @@ export const regularProjects = [
       "/images/iot-gas-1.png",
       "/images/iot-gas-2.png",
       "/images/iot-gas-3.png"
+    ]
+  },
+  {
+    title: "MyGuardian",
+    description: "A spiritual AI companion that provides personalized biblical guidance. Users can share their issues and receive relevant Bible verses from the King James dataset, along with AI-powered insights. Built with privacy-first approach - no user data is stored, ensuring complete confidentiality.",
+    stack: ["AI/ML", "Gemini API", "Next.js", "Bible API", "Privacy-First Design"],
+    year: "2025",
+    status: "In Development",
+    comingSoon: true,
+    images: [
+      "/images/guardian-ui-1.png",
+      "/images/guardian-ui-2.png",
+      "/images/guardian-ui-3.png"
+    ]
+  },
+  {
+    title: "Smart Bicycle Sensor System",
+    description: "An IoT-based bicycle enhancement system featuring blind spot detection, speedometer, trip meter for maintenance tracking, ambient light sensor for automatic LED indicators, and GPS location tracking. Designed to improve cycling safety and provide comprehensive ride analytics.",
+    stack: ["IoT", "Arduino", "GPS Module", "Light Sensors", "Bluetooth", "Mobile App"],
+    year: "2025",
+    status: "In Development",
+    comingSoon: true,
+    images: [
+      "/images/bike-sensor-1.png",
+      "/images/bike-sensor-2.png",
+      "/images/bike-sensor-3.png"
     ]
   }
 ];
