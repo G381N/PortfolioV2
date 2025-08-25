@@ -85,8 +85,7 @@ export const regularProjects = [
     status: "Completed",
     images: [
       "/images/password-world-ui-1.png",
-      "/images/password-world-ui-2.png",
-      "/images/password-world-ui-3.png"
+      "/images/password-world-ui-2.png"
     ]
   },
   {
