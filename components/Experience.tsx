@@ -59,14 +59,14 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="py-20 relative overflow-hidden bg-black">
+    <section id="experience" className="py-20 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div 
-          className="absolute top-20 right-40 w-72 h-72 rounded-full bg-blue-500/10 blur-3xl"
+          className="absolute top-20 right-40 w-72 h-72 rounded-full bg-blue-500/5 blur-3xl"
           animate={{ 
             scale: [1, 1.3, 1],
-            opacity: [0.3, 0.6, 0.3]
+            opacity: [0.1, 0.3, 0.1]
           }}
           transition={{ 
             duration: 8, 
@@ -75,10 +75,10 @@ export default function Experience() {
           }}
         />
         <motion.div 
-          className="absolute bottom-20 left-40 w-80 h-80 rounded-full bg-blue-500/10 blur-3xl"
+          className="absolute bottom-20 left-40 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1],
-            opacity: [0.4, 0.7, 0.4]
+            opacity: [0.2, 0.4, 0.2]
           }}
           transition={{ 
             duration: 10, 

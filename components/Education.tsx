@@ -55,12 +55,10 @@ export default function Education() {
   ];
 
   return (
-    <section id="education" className="py-16 md:py-20 relative overflow-hidden bg-black">
-      {/* Animated background patterns */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-black"></div>
-        
-        {/* Grid pattern */}
+    <section id="education" className="py-16 md:py-20 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 z-0">        
+        {/* Animated Grid */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.02]" width="100%" height="100%">
           <pattern id="educationGrid" width="40" height="40" patternUnits="userSpaceOnUse">
             <circle cx="20" cy="20" r="1" fill="#ffffff" />

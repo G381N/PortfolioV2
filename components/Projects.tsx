@@ -169,14 +169,12 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-20 relative overflow-hidden bg-black">
+    <section id="projects" className="py-16 md:py-20 relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black"></div>
-        
+      <div className="absolute inset-0 z-0">        
         {/* Animated Grid */}
         <motion.div 
-          className="absolute inset-0 opacity-[0.02]"
+          className="absolute inset-0 opacity-[0.015]"
           style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(59, 130, 246, 0.3) 1px, transparent 0)`,
             backgroundSize: "50px 50px",
@@ -193,7 +191,7 @@ export default function Projects() {
 
         {/* Floating Orbs */}
         <motion.div 
-          className="absolute top-20 left-20 w-96 h-96 rounded-full bg-blue-500/5 blur-3xl pointer-events-none"
+          className="absolute top-20 left-20 w-96 h-96 rounded-full bg-blue-500/3 blur-3xl pointer-events-none"
           animate={{ 
             x: [0, 100, 0], 
             y: [0, -50, 0],
@@ -207,7 +205,7 @@ export default function Projects() {
         />
         
         <motion.div 
-          className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl pointer-events-none"
+          className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-blue-500/3 blur-3xl pointer-events-none"
           animate={{ 
             x: [0, -80, 0], 
             y: [0, 40, 0],

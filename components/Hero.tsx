@@ -39,10 +39,10 @@ export default function Hero() {
   ];
 
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden bg-black flex items-center pt-32">
+    <section id="home" className="min-h-screen relative overflow-hidden flex items-center pt-32">
       {/* Enhanced Background with Smooth Grid */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/8 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/8 to-transparent" />
         
         {/* Smoother animated grid */}
         <motion.div 

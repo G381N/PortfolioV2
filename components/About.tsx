@@ -34,15 +34,15 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden bg-black">
+    <section id="about" className="py-20 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10">
         {/* Animated grid background */}
         <div className="absolute inset-0" 
              style={{
                backgroundImage: `
-                 linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-                 linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px)
+                 linear-gradient(to right, rgba(59, 130, 246, 0.02) 1px, transparent 1px),
+                 linear-gradient(to bottom, rgba(59, 130, 246, 0.02) 1px, transparent 1px)
                `,
                backgroundSize: '60px 60px'
              }} 
@@ -50,7 +50,7 @@ export default function About() {
         
         {/* Decorative elements */}
         <motion.div 
-          className="absolute top-40 left-20 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl"
+          className="absolute top-40 left-20 w-64 h-64 rounded-full bg-blue-500/5 blur-3xl"
           animate={{ 
             x: [0, 20, 0], 
             y: [0, -30, 0],
@@ -64,7 +64,7 @@ export default function About() {
         />
         
         <motion.div 
-          className="absolute bottom-40 right-20 w-72 h-72 rounded-full bg-blue-400/5 blur-3xl"
+          className="absolute bottom-40 right-20 w-72 h-72 rounded-full bg-blue-400/3 blur-3xl"
           animate={{ 
             x: [0, -20, 0], 
             y: [0, 20, 0],
@@ -81,11 +81,11 @@ export default function About() {
         {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/60 rounded-full"
+            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
             animate={{
               x: [0, Math.random() * 200 - 100],
               y: [0, Math.random() * 200 - 100],
-              opacity: [0.2, 0.8, 0.2],
+              opacity: [0.1, 0.4, 0.1],
             }}
             transition={{
               duration: 4 + Math.random() * 3,
