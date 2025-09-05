@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Gebin George" }],
   creator: "Gebin George",
   publisher: "Gebin George",
+  manifest: "/manifest.json",
   openGraph: {
     title: "Gebin George - Cybersecurity Enthusiast",
     description: "Portfolio showcasing innovative projects in cybersecurity, bug bounty hunting, and secure web development by Gebin George.",
@@ -49,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <CursorSpotlight />
         <Navigation />
         <main>{children}</main>
