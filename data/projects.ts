@@ -220,9 +220,9 @@ export const regularProjects = [
     title: "MyGuardian",
     description: "A spiritual AI companion that provides personalized biblical guidance. Users can share their issues and receive relevant Bible verses from the King James dataset, along with AI-powered insights. Built with privacy-first approach - no user data is stored, ensuring complete confidentiality.",
     stack: ["AI/ML", "Gemini API", "Next.js", "Bible API", "Privacy-First Design"],
+    live: "https://myguardian.gebin.net",
     year: "2025",
-    status: "In Development",
-    comingSoon: true,
+    status: "Completed",
     images: [
       "/images/guardian-ui-1.png",
       "/images/guardian-ui-2.png",

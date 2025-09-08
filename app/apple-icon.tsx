@@ -17,15 +17,17 @@ export default function Icon() {
       <div
         style={{
           fontSize: 100,
-          background: 'linear-gradient(135deg, #8B5CF6 0%, #6366F1 25%, #3B82F6 75%, #1D4ED8 100%)',
+          background: '#000000',
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: 'white',
+          color: '#3B82F6',
           fontWeight: 900,
+          fontFamily: 'Times New Roman, serif',
           borderRadius: 36,
+          border: '4px solid #3B82F6',
           boxShadow: '0 8px 32px rgba(59, 130, 246, 0.3)',
         }}
       >
