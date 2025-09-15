@@ -1,3 +1,4 @@
+<!-- Portfolio update - 2024 -->
 # Deployment Guide
 
 ## Vercel Deployment with Environment Variables

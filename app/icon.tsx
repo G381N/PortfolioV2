@@ -1,3 +1,4 @@
+// Portfolio update - 2024
 import { ImageResponse } from 'next/og'
  
 // Route segment config

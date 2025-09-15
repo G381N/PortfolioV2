@@ -1,3 +1,4 @@
+// Portfolio update - 2024
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",

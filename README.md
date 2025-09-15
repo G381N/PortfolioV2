@@ -1,4 +1,9 @@
+<!-- Portfolio update - 2024 -->
 # 💼 Gebin's Portfolio
+
+Hey there! 👋  
+Welcome to my personal portfolio repository.  
+Here, you'll find **my latest resume**, **projects**, **experience**, and updates on what I'm working on.Gebin's Portfolio
 
 Hey there! 👋  
 Welcome to my personal portfolio repository.  

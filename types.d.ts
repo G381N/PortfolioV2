@@ -1,3 +1,4 @@
+// Portfolio update - 2024
 import React from 'react';
 
 // External module declarations

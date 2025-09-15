@@ -1,3 +1,4 @@
+// Portfolio update - 2024
 // Shared project data
 export const featuredProjects = [
   {

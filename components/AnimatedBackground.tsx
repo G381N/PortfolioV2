@@ -1,3 +1,4 @@
+// Portfolio update - 2024
 "use client";
 
 import { useEffect, useRef } from 'react';
