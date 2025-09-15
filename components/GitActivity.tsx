@@ -163,29 +163,37 @@ export default function GitActivity() {
   };
 
   const getCurrentYearData = (allDays: ContributionDay[]): ContributionDay[] => {
-    const currentYear = new Date().getFullYear();
+    const today = new Date();
+    
+    // Calculate the start date: Sunday of the week containing (today - 365 days)
+    const oneYearAgo = new Date(today);
+    oneYearAgo.setDate(today.getDate() - 365);
+    
+    // Find the Sunday of the week containing oneYearAgo
+    const startDate = new Date(oneYearAgo);
+    startDate.setDate(oneYearAgo.getDate() - oneYearAgo.getDay()); // Go back to Sunday
     
     return allDays.filter(day => {
       const dayDate = new Date(day.date);
-      return dayDate.getFullYear() === currentYear;
+      return dayDate >= startDate && dayDate <= today;
     });
   };
 
   const generateDensePatternFallback = (): ContributionDay[] => {
     const data: ContributionDay[] = [];
     const today = new Date();
-    const currentYear = today.getFullYear();
     
-    // Always show full year for both mobile and desktop
-    const startOfYear = new Date(currentYear, 0, 1);
-    const startDate = new Date(startOfYear);
-    startDate.setDate(startDate.getDate() - startDate.getDay());
+    // Calculate the start date: Sunday of the week containing (today - 365 days)
+    const oneYearAgo = new Date(today);
+    oneYearAgo.setDate(today.getDate() - 365);
     
-    for (let i = 0; i < 371; i++) {
-      const currentDate = new Date(startDate);
-      currentDate.setDate(startDate.getDate() + i);
-      
-      const activity = generateDenseActivity(currentDate, startOfYear, today);
+    // Find the Sunday of the week containing oneYearAgo
+    const startDate = new Date(oneYearAgo);
+    startDate.setDate(oneYearAgo.getDate() - oneYearAgo.getDay()); // Go back to Sunday
+    
+    // Generate data from start date up to today
+    for (let currentDate = new Date(startDate); currentDate <= today; currentDate.setDate(currentDate.getDate() + 1)) {
+      const activity = generateDenseActivity(currentDate, startDate, today);
       data.push({
         date: currentDate.toISOString().split('T')[0],
         level: activity,
@@ -449,41 +457,46 @@ export default function GitActivity() {
                         
                         {/* Contribution grid - horizontal weeks */}
                         <div className="flex gap-[3px]">
-                          {Array.from({ length: 53 }, (_, weekIndex) => (
-                            <div key={weekIndex} className="flex flex-col gap-[3px]">
-                              {Array.from({ length: 7 }, (_, dayIndex) => {
-                                const dataIndex = weekIndex * 7 + dayIndex;
-                                const day = contributionData[dataIndex];
-                                
-                                if (!day) return (
-                                  <div 
-                                    key={dayIndex} 
-                                    className="w-[11px] h-[11px] rounded-[2px] bg-gray-800"
-                                  />
-                                );
-                                
-                                return (
-                                  <motion.div
-                                    key={dataIndex}
-                                    className={`w-[11px] h-[11px] rounded-[2px] ${getContributionColor(day.level)} cursor-pointer`}
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ 
-                                      delay: dataIndex * 0.001, 
-                                      duration: 0.2,
-                                      type: "spring",
-                                      stiffness: 120 
-                                    }}
-                                    whileHover={{ 
-                                      scale: 1.2,
-                                      transition: { duration: 0.1 }
-                                    }}
-                                    title={`${day.count} contributions on ${day.date}`}
-                                  />
-                                );
-                              })}
-                            </div>
-                          ))}
+                          {(() => {
+                            // Calculate the number of weeks we need
+                            const numberOfWeeks = Math.ceil(contributionData.length / 7);
+                            
+                            return Array.from({ length: numberOfWeeks }, (_, weekIndex) => (
+                              <div key={weekIndex} className="flex flex-col gap-[3px]">
+                                {Array.from({ length: 7 }, (_, dayIndex) => {
+                                  const dataIndex = weekIndex * 7 + dayIndex;
+                                  const day = contributionData[dataIndex];
+                                  
+                                  if (!day) return (
+                                    <div 
+                                      key={dayIndex} 
+                                      className="w-[11px] h-[11px] rounded-[2px] bg-gray-800"
+                                    />
+                                  );
+                                  
+                                  return (
+                                    <motion.div
+                                      key={dataIndex}
+                                      className={`w-[11px] h-[11px] rounded-[2px] ${getContributionColor(day.level)} cursor-pointer`}
+                                      initial={{ opacity: 0, scale: 0 }}
+                                      animate={{ opacity: 1, scale: 1 }}
+                                      transition={{ 
+                                        delay: dataIndex * 0.001, 
+                                        duration: 0.2,
+                                        type: "spring",
+                                        stiffness: 120 
+                                      }}
+                                      whileHover={{ 
+                                        scale: 1.2,
+                                        transition: { duration: 0.1 }
+                                      }}
+                                      title={`${day.count} contributions on ${day.date}`}
+                                    />
+                                  );
+                                })}
+                              </div>
+                            ));
+                          })()}
                         </div>
                       </div>
                     </div>
