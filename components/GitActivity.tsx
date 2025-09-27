@@ -438,10 +438,47 @@ export default function GitActivity() {
                       {/* Month labels - positioned above the calendar */}
                       <div className="flex">
                         <div className="w-7"></div> {/* Space for day labels */}
-                        <div className="flex-1 flex justify-between text-xs text-gray-400 px-2">
-                          {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month) => (
-                            <span key={month}>{month}</span>
-                          ))}
+                        <div className="flex gap-[3px]">
+                          {(() => {
+                            const monthLabels: JSX.Element[] = [];
+                            const numberOfWeeks = Math.ceil(contributionData.length / 7);
+                            let currentMonth = -1;
+                            
+                            // Calculate which weeks start a new month
+                            for (let weekIndex = 0; weekIndex < numberOfWeeks; weekIndex++) {
+                              const firstDayIndex = weekIndex * 7;
+                              const firstDay = contributionData[firstDayIndex];
+                              
+                              if (firstDay) {
+                                const date = new Date(firstDay.date);
+                                const month = date.getMonth();
+                                const dayOfMonth = date.getDate();
+                                
+                                // Show month label if it's a new month and it's early in the month (within first 7 days)
+                                // OR if it's the first week
+                                if ((month !== currentMonth && dayOfMonth <= 7) || weekIndex === 0) {
+                                  currentMonth = month;
+                                  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                                  monthLabels.push(
+                                    <div key={`${weekIndex}-${month}`} className="flex items-center justify-start w-[14px] text-xs text-gray-400">
+                                      {monthNames[month]}
+                                    </div>
+                                  );
+                                } else {
+                                  // Empty space for weeks that don't start a new month
+                                  monthLabels.push(
+                                    <div key={`empty-${weekIndex}`} className="w-[14px]"></div>
+                                  );
+                                }
+                              } else {
+                                monthLabels.push(
+                                  <div key={`empty-${weekIndex}`} className="w-[14px]"></div>
+                                );
+                              }
+                            }
+                            
+                            return monthLabels;
+                          })()}
                         </div>
                       </div>
                       
@@ -459,25 +496,44 @@ export default function GitActivity() {
                         {/* Contribution grid - horizontal weeks */}
                         <div className="flex gap-[3px]">
                           {(() => {
-                            // Calculate the number of weeks we need
-                            const numberOfWeeks = Math.ceil(contributionData.length / 7);
+                            if (contributionData.length === 0) return null;
+                            
+                            // Get the day of week for the first day (0 = Sunday, 1 = Monday, etc.)
+                            const firstDate = new Date(contributionData[0].date);
+                            const startDayOfWeek = firstDate.getDay(); // 0 = Sunday
+                            
+                            // Calculate total cells needed including empty cells at start
+                            const totalCells = startDayOfWeek + contributionData.length;
+                            const numberOfWeeks = Math.ceil(totalCells / 7);
                             
                             return Array.from({ length: numberOfWeeks }, (_, weekIndex) => (
                               <div key={weekIndex} className="flex flex-col gap-[3px]">
                                 {Array.from({ length: 7 }, (_, dayIndex) => {
-                                  const dataIndex = weekIndex * 7 + dayIndex;
+                                  const absoluteIndex = weekIndex * 7 + dayIndex;
+                                  
+                                  // Show empty cell for days before our data starts
+                                  if (absoluteIndex < startDayOfWeek) {
+                                    return (
+                                      <div 
+                                        key={`empty-${dayIndex}`} 
+                                        className="w-[11px] h-[11px] rounded-[2px] bg-transparent"
+                                      />
+                                    );
+                                  }
+                                  
+                                  const dataIndex = absoluteIndex - startDayOfWeek;
                                   const day = contributionData[dataIndex];
                                   
                                   if (!day) return (
                                     <div 
-                                      key={dayIndex} 
-                                      className="w-[11px] h-[11px] rounded-[2px] bg-gray-800"
+                                      key={`empty-${dayIndex}`} 
+                                      className="w-[11px] h-[11px] rounded-[2px] bg-transparent"
                                     />
                                   );
                                   
                                   return (
                                     <motion.div
-                                      key={dataIndex}
+                                      key={`data-${dataIndex}`}
                                       className={`w-[11px] h-[11px] rounded-[2px] ${getContributionColor(day.level)} cursor-pointer`}
                                       initial={{ opacity: 0, scale: 0 }}
                                       animate={{ opacity: 1, scale: 1 }}

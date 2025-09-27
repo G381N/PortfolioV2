@@ -53,6 +53,8 @@ export default function Projects() {
   const [flippedCards, setFlippedCards] = useState<Set<string>>(new Set());
   const [imageIndices, setImageIndices] = useState<Record<string, number>>({});
   const [autoPlayEnabled, setAutoPlayEnabled] = useState<Record<string, boolean>>({});
+  // Track project click counts
+  const [projectClicks, setProjectClicks] = useState<Record<string, number>>({});
 
   // Helper function to check if project has any linkable content
   const hasLinkableContent = (project: any) => {
@@ -86,14 +88,25 @@ export default function Projects() {
     };
   }, [flippedCards, imageIndices, autoPlayEnabled]);
   
-  const displayedRegularProjects = showAllProjects ? regularProjects : regularProjects.slice(0, 6);
+  // Sort regularProjects by click count (descending), then by original order
+  const sortedRegularProjects = [...regularProjects].sort((a, b) => {
+    const aClicks = projectClicks[a.title] || 0;
+    const bClicks = projectClicks[b.title] || 0;
+    if (aClicks !== bClicks) return bClicks - aClicks;
+    return 0;
+  });
+  const displayedRegularProjects = showAllProjects ? sortedRegularProjects : sortedRegularProjects.slice(0, 6);
 
   const toggleCardFlip = (projectTitle: string) => {
+    // Increment click count for this project
+    setProjectClicks(prev => ({
+      ...prev,
+      [projectTitle]: (prev[projectTitle] || 0) + 1
+    }));
     setFlippedCards(prev => {
       const newSet = new Set(prev);
       if (newSet.has(projectTitle)) {
         newSet.delete(projectTitle);
-        
         // Disable autoplay when flipping back
         setAutoPlayEnabled(prev => ({
           ...prev,
@@ -101,7 +114,6 @@ export default function Projects() {
         }));
       } else {
         newSet.add(projectTitle);
-        
         // Enable autoplay when card is flipped to image view
         setAutoPlayEnabled(prev => ({
           ...prev,
@@ -110,7 +122,6 @@ export default function Projects() {
       }
       return newSet;
     });
-    
     // Reset image index when flipping back to content
     if (!flippedCards.has(projectTitle)) {
       setImageIndices(prev => ({

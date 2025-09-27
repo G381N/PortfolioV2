@@ -34,6 +34,20 @@ export const featuredProjects = [
 ];
 
 export const regularProjects = [
+  {
+    title: "NextUp",
+    description: "NextUp is a simple task tracker I built to beat procrastination. It automatically sorts tasks in the fastest possible order, balancing priorities with smaller tasks so nothing gets left behind. Deadlines, priorities, and efficiency—all handled neatly, so you always know what to do next.",
+    stack: ["Next.js", "Task Sorting", "Productivity", "Efficiency"],
+    github: "https://github.com/G381N/UpNext",
+    live: "https://nextup.gebin.net",
+    year: "2025",
+    status: "Completed",
+    images: [
+      "/images/nextup1.png",
+      "/images/nextup2.png",
+      "/images/nextup3.png"
+    ]
+  },
    {
     title: "LinkedIn Free Premium Claim – Phishing Simulation (Educational)",
     description: "A simulated phishing page mimicking a LinkedIn Premium offer, built for educational purposes. Demonstrates how attackers use urgency, trust, and AI tools to create convincing baits and harvest credentials. Hosted on Firebase Studio and integrated with Zphisher for credential capture. Strictly for academic awareness—no real malicious activity.",
@@ -212,9 +226,7 @@ export const regularProjects = [
     year: "2025",
     status: "Completed",
     images: [
-      "/images/iot-gas-1.png",
-      "/images/iot-gas-2.png",
-      "/images/iot-gas-3.png"
+      "/images/iot-gas-1.png"
     ]
   },
   {
@@ -234,13 +246,12 @@ export const regularProjects = [
     title: "Smart Bicycle Sensor System",
     description: "An IoT-based bicycle enhancement system featuring blind spot detection, speedometer, trip meter for maintenance tracking, ambient light sensor for automatic LED indicators, and GPS location tracking. Designed to improve cycling safety and provide comprehensive ride analytics.",
     stack: ["IoT", "Arduino", "GPS Module", "Light Sensors", "Bluetooth", "Mobile App"],
+    github: "https://github.com/G381N/SmartBycycleSensor",
+    live: "https://wokwi.com/projects/439559223639470081",
     year: "2025",
     status: "In Development",
-    comingSoon: true,
     images: [
-      "/images/bike-sensor-1.png",
-      "/images/bike-sensor-2.png",
-      "/images/bike-sensor-3.png"
+      "/images/bike-sensor-1.png"
     ]
   }
 ];
