@@ -16,8 +16,8 @@ export default function Footer() {
 
   const navigationItems = [
     { name: "Home", href: "#home", icon: FiHome },
-    { name: "Projects", href: "#projects", icon: FiCode },
     { name: "About", href: "#about", icon: FiUser },
+    { name: "Projects", href: "#projects", icon: FiCode },
     { name: "Contact", href: "#contact", icon: FiSend },
   ];
 

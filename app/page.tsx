@@ -26,8 +26,8 @@ export default function Home() {
         <>
           <AnimatedBackground />
           <Hero />
-          <Projects />
           <About />
+          <Projects />
           <Experience />
           <GitActivity />
           <Education />

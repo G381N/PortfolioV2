@@ -14,8 +14,8 @@ export default function Navigation() {
   // Navigation items
   const navigation = [
     { name: 'Home', href: '#hero', type: 'internal' },
-    { name: 'Projects', href: '#projects', type: 'internal' },
     { name: 'About', href: '#about', type: 'internal' },
+    { name: 'Projects', href: '#projects', type: 'internal' },
     { name: 'Experience', href: '#experience', type: 'internal' },
     { name: 'Resume', href: '/resume.pdf', type: 'download' },
     { name: 'GitHub', href: 'https://github.com/G381N/', type: 'external' },
