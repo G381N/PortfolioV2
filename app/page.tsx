@@ -26,11 +26,11 @@ export default function Home() {
         <>
           <AnimatedBackground />
           <Hero />
-          <About />
-          <Education />
-          <Experience />
           <Projects />
+          <About />
+          <Experience />
           <GitActivity />
+          <Education />
           <SaveContactButton />
         </>
       )}

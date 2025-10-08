@@ -232,16 +232,34 @@ export default function Projects() {
       </div>
 
       <div className="container mx-auto px-4 relative z-20">
+        {/* Enhanced Section Header */}
         <ScrollAnimation>
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-4">
-            Featured Projects
-          </h2>
-        </ScrollAnimation>
-        
-        <ScrollAnimation delay={0.1} direction="up">
-          <p className="text-gray-400 text-center max-w-3xl mx-auto mb-6">
-            Showcasing innovative solutions across web development, IoT systems, and cutting-edge technologies
-          </p>
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              className="inline-block mb-4"
+              animate={{
+                scale: [1, 1.05, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <span className="text-blue-400 font-semibold text-lg tracking-wider uppercase">Portfolio</span>
+            </motion.div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Featured <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Projects</span>
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+              Showcasing innovative solutions across web development, IoT systems, and cutting-edge technologies
+            </p>
+          </motion.div>
         </ScrollAnimation>
         
         <ScrollAnimation delay={0.2}>

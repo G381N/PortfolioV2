@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiInstagram, FiYoutube, FiMapPin, FiPhone, FiMail } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiInstagram, FiYoutube, FiMapPin, FiPhone, FiMail, FiDownload } from "react-icons/fi";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Hero() {
@@ -159,6 +159,56 @@ export default function Hero() {
                   Currently pursuing my Master's in Computer Applications, I enjoy building tools, 
                   exploring AI, and breaking into security labs one exploit at a time.
                 </motion.p>
+
+                {/* Call to Action Buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="flex flex-wrap justify-center gap-4 mb-8"
+                >
+                  <motion.a
+                    href="#projects"
+                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      View My Work
+                      <motion.span
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                      >
+                        →
+                      </motion.span>
+                    </span>
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-400"
+                      initial={{ x: '-100%' }}
+                      whileHover={{ x: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.a>
+                  
+                  <motion.a
+                    href="/resume.pdf"
+                    download
+                    className="group relative px-8 py-4 border-2 border-blue-500 text-blue-400 font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:text-white hover:shadow-2xl hover:shadow-blue-500/30"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      <FiDownload className="w-5 h-5" />
+                      Download Resume
+                    </span>
+                    <motion.div
+                      className="absolute inset-0 bg-blue-500"
+                      initial={{ y: '100%' }}
+                      whileHover={{ y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.a>
+                </motion.div>
 
                 {/* Contact Information */}
                 <motion.div
