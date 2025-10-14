@@ -125,103 +125,6 @@ export default function Hero() {
                 {/* Two-column layout inside the card */}
                 <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                   
-<<<<<<< HEAD
-                  {/* Smooth hover glow effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-radial from-blue-400/10 via-blue-500/5 to-transparent rounded-full blur-3xl group-hover:from-blue-400/20 group-hover:via-blue-500/10 transition-all duration-700 ease-out -z-10"
-                    animate={{
-                      scale: [1, 1.02, 1],
-                      opacity: [0.4, 0.6, 0.4]
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                </motion.h1>
-
-                {/* Introduction */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  className="text-lg md:text-xl text-gray-300 leading-relaxed mb-8"
-                >
-                  Currently pursuing my Master's in Computer Applications, I enjoy building tools, 
-                  exploring AI, and breaking into security labs one exploit at a time.
-                </motion.p>
-
-                {/* Call to Action Buttons */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                  className="flex flex-wrap justify-center gap-4 mb-8"
-                >
-                  <motion.a
-                    href="#projects"
-                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      View My Work
-                      <motion.span
-                        animate={{ x: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        →
-                      </motion.span>
-                    </span>
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-400"
-                      initial={{ x: '-100%' }}
-                      whileHover={{ x: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.a>
-                  
-                  <motion.a
-                    href="/resume.pdf"
-                    download
-                    className="group relative px-8 py-4 border-2 border-blue-500 text-blue-400 font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:text-white hover:shadow-2xl hover:shadow-blue-500/30"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      <FiDownload className="w-5 h-5" />
-                      Download Resume
-                    </span>
-                    <motion.div
-                      className="absolute inset-0 bg-blue-500"
-                      initial={{ y: '100%' }}
-                      whileHover={{ y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.a>
-                </motion.div>
-
-                {/* Contact Information */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  className="space-y-3 mb-8"
-                >
-                  {/* Location */}
-                  <div className="flex items-center justify-center text-gray-300">
-                    <FiMapPin className="mr-3 text-blue-400" size={18} />
-                    <span>Bangalore, Karnataka, India</span>
-                  </div>
-                  
-                  {/* Phone */}
-                  <div className="flex items-center justify-center text-gray-300">
-                    <FiPhone className="mr-3 text-blue-400" size={18} />
-                    <a 
-                      href="tel:+919741301245" 
-                      className="hover:text-blue-400 transition-colors"
-=======
                   {/* Left column - Content */}
                   <div className="w-full lg:w-1/2 text-center lg:text-left">
                     {/* Name with hover animation */}
@@ -231,7 +134,6 @@ export default function Hero() {
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 cursor-pointer group"
                       whileHover={{ scale: 1.05 }}
->>>>>>> 5062519 (Enhance Hero component with new animations and layout adjustments; add HeroArrow for dynamic arrow effect)
                     >
                       <span className="bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent group-hover:from-blue-200 group-hover:via-white group-hover:to-blue-200 transition-all duration-500">
                         Gebin
